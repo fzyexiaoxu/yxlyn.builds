@@ -594,7 +594,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		return buildsSummary;
 	}
 
-	TreeViewer getViewer() {
+	public TreeViewer getViewer() {
 		return viewer;
 	}
 
