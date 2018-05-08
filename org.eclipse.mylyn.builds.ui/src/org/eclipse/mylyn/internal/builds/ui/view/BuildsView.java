@@ -808,4 +808,21 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		return model;
 	}
 
+	public static BuildsView getFromActivePerspective() {
+		if (PlatformUI.isWorkbenchRunning()) {
+			IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			if (activeWorkbenchWindow != null) {
+				IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+				if (activePage != null) {
+					IViewPart view = activePage.findView(BuildsUiConstants.ID_VIEW_BUILDS);
+					if (view instanceof BuildsView) {
+						return (BuildsView) view;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+
 }
