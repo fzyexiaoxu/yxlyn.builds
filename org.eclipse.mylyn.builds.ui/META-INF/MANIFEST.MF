@@ -53,4 +53,4 @@ Export-Package: org.eclipse.mylyn.builds.ui;x-internal:=true,
  org.eclipse.mylyn.internal.builds.ui.navigator;x-internal:=true,
  org.eclipse.mylyn.internal.builds.ui.notifications;x-internal:=true,
  org.eclipse.mylyn.internal.builds.ui.util;x-internal:=true,
- org.eclipse.mylyn.internal.builds.ui.view;x-internal:=true
+ org.eclipse.mylyn.internal.builds.ui.view;x-internal:=false
