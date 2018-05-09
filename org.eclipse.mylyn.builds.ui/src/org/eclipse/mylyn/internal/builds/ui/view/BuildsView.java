@@ -71,6 +71,8 @@ import org.eclipse.mylyn.internal.builds.ui.actions.ShowTestResultsAction;
 import org.eclipse.mylyn.internal.builds.ui.commands.OpenHandler;
 import org.eclipse.mylyn.internal.builds.ui.notifications.BuildsServiceMessageControl;
 import org.eclipse.mylyn.internal.builds.ui.view.BuildContentProvider.Presentation;
+import org.eclipse.mylyn.internal.event.NotifyBuilderEvent;
+import org.eclipse.mylyn.internal.event.NotifyBuilderEventListenerInterface;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
@@ -88,8 +90,10 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IMemento;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPage;
@@ -104,13 +108,6 @@ import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.IWorkbenchSiteProgressService;
-
-import org.eclipse.ui.IViewPart;
-import org.eclipse.mylyn.internal.event.*;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.TreeItem;
 
 /**
  * @author Steffen Pingel
@@ -289,28 +286,27 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		}
 	};
 
-  private final NotifyBuilderEventListenerInterface builderReceiverEventListener = new NotifyBuilderEventListenerInterface() {
-  	    public void handleEvent(NotifyBuilderEvent de) { 
-           String compontent = de.getCompontent();
-           
-           for (TreeItem parentItem : getViewer().getTree().getItems() )
-           {
-           	    for ( TreeItem item:parentItem.getITems() ) {
-           	    	   if (item.getData() instanceof IBuildPlan) {
-           	    	   	   IBuildPlan plan = (IBuildPlan)item.getData();
-           	    	   	   if (plan.getSummary().equals(compontent) ) {
-           	    	   	   	  IStructuredSelection selection = new IStructuredSelection(plan);
-           	    	   	   	  getViewer().setSelection(selection); 
-           	    	   	   }
-           	    	   	
-           	    	   }
-           	    }
-           
-           }         
-    } 
+	private final NotifyBuilderEventListenerInterface builderReceiverEventListener = new NotifyBuilderEventListenerInterface() {
+		public void handleEvent(NotifyBuilderEvent de) {
+			String compontent = de.getCompontent();
 
-  };
-	
+			for (TreeItem parentItem : getViewer().getTree().getItems()) {
+				for (TreeItem item : parentItem.getItems()) {
+					if (item.getData() instanceof IBuildPlan) {
+						IBuildPlan plan = (IBuildPlan) item.getData();
+						if (plan.getSummary().equals(compontent)) {
+							IStructuredSelection selection = new StructuredSelection(plan);
+							getViewer().setSelection(selection);
+						}
+
+					}
+				}
+
+			}
+		}
+
+	};
+
 	private RefreshAutomaticallyAction refreshAutomaticallyAction;
 
 	private StackLayout stackLayout;
@@ -330,7 +326,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	public BuildsView() {
 		BuildsUiPlugin.getDefault().initializeRefresh();
 	}
-    
+
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
@@ -852,6 +848,5 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		}
 		return null;
 	}
-
 
 }

@@ -7,6 +7,7 @@
 			<accessrule kind="accessible" pattern="org/eclipse/mylyn/commons/notifications/**"/>
 			<accessrule kind="accessible" pattern="org/eclipse/mylyn/commons/repositories/**"/>
 			<accessrule kind="accessible" pattern="org/eclipse/mylyn/versions/**"/>
+			<accessrule kind="accessible" pattern="org/eclipse/mylyn/internal/**"/>
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/Program Files/eclipse/plugins/org.eclipse.mylyn.tasks.ui_3.24.0.v20180227-0955.jar"/>
