@@ -335,9 +335,9 @@ public class BuildsView extends ViewPart implements IShowInTarget {
       		   }*/
       	  }
       	);
-		}
-	}
-
+		 }
+	 }
+ }
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
