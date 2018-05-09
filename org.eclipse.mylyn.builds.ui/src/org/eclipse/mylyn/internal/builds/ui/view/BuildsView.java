@@ -315,29 +315,26 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		
 		if (taskListView != null) {
 			log.log("taskListView:"+taskListView.ID);
-			/*
-			  taskListView.getNotifyBuilderSource().addEventListener(
+			
+			taskListView.getNotifyBuilderSource().addEventListener(
       new NotifyBuilderEventListenerInterface() {
       		public void handleEvent(NotifyBuilderEvent de) {
       			   String compontent = de.getCompontent();
       			   log.log(compontent);
-               
+               /*
       			   for (TreeItem parentItem : getViewer().getTree().getItems()) {
-      			   	for (TreeItem item : parentItem.getItems()) {
-      			   		if (item.getData() instanceof IBuildPlan) {
-      			   			IBuildPlan plan = (IBuildPlan) item.getData();
-      			   			if (plan.getSummary().equals(compontent)) {
-      			   				IStructuredSelection selection = new StructuredSelection(plan);
-      			   				getViewer().setSelection(selection);
-      			   			}
-               
-      			   		}
-      			   	}
-               
-      			   
-      		   }
+      			   	 for (TreeItem item : parentItem.getItems()) {
+      			   		   if (item.getData() instanceof IBuildPlan) {
+      			   			   IBuildPlan plan = (IBuildPlan) item.getData();
+      			   			   if (plan.getSummary().equals(compontent)) {
+      			   				    IStructuredSelection selection = new StructuredSelection(plan);
+      			   				    getViewer().setSelection(selection);
+      			   			   }               
+      			   		   }
+      			   	 }                  			   
+      		   }*/
       	  }
-      	);*/
+      	);
 		}
 	}
 
