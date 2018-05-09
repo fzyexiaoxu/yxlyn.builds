@@ -308,36 +308,40 @@ public class BuildsView extends ViewPart implements IShowInTarget {
   public mylog  log;
 
 	public BuildsView() {
-		log = new mylog("BuildsView");
-		log.log("BuildsView.create");
-		BuildsUiPlugin.getDefault().initializeRefresh();
-		TaskListView taskListView = TaskListView.getFromActivePerspective();
-		
-		if (taskListView != null) {
-			log.log("taskListView:"+taskListView.ID);
-			
-			taskListView.getNotifyBuilderSource().addEventListener( new NotifyBuilderEventListenerInterface() {
-			    @Override
-      		public void handleEvent(NotifyBuilderEvent de) {
-      			   /*String compontent = de.getCompontent();
-      			   log.log(compontent);
-               
-      			   for (TreeItem parentItem : getViewer().getTree().getItems()) {
-      			   	 for (TreeItem item : parentItem.getItems()) {
-      			   		   if (item.getData() instanceof IBuildPlan) {
-      			   			   IBuildPlan plan = (IBuildPlan) item.getData();
-      			   			   if (plan.getSummary().equals(compontent)) {
-      			   				    IStructuredSelection selection = new StructuredSelection(plan);
-      			   				    getViewer().setSelection(selection);
-      			   			   }               
-      			   		   }
-      			   	 }                  			   
-      		   }*/
-      	   }
-      	 }
-			 );
+	  	log = new mylog("BuildsView");
+	  	log.log("BuildsView.create");
+	  	BuildsUiPlugin.getDefault().initializeRefresh();
+	  	TaskListView taskListView = TaskListView.getFromActivePerspective();
+	  	
+	  	if (taskListView != null) {
+	  		log.log("taskListView:"+taskListView.ID);
+	  		
+	  		NotifyBuilderEventSource notifyEventSource = taskListView.getNotifyBuilderSource();
+	  		if (notifyEventSource!=null) {
+	  		      log.log("notifyEventSource is not null:");
+	  		      notifyEventSource.addEventListener( new NotifyBuilderEventListenerInterface() {
+	  		      @Override
+        		  public void handleEvent(NotifyBuilderEvent de) {
+        		  	   /*String compontent = de.getCompontent();
+        		  	   log.log(compontent);
+                   
+        		  	   for (TreeItem parentItem : getViewer().getTree().getItems()) {
+        		  	   	 for (TreeItem item : parentItem.getItems()) {
+        		  	   		   if (item.getData() instanceof IBuildPlan) {
+        		  	   			   IBuildPlan plan = (IBuildPlan) item.getData();
+        		  	   			   if (plan.getSummary().equals(compontent)) {
+        		  	   				    IStructuredSelection selection = new StructuredSelection(plan);
+        		  	   				    getViewer().setSelection(selection);
+        		  	   			   }               
+        		  	   		   }
+        		  	   	 }                  			   
+        		     }*/
+        	     }
+        	   }  
+	  		  );
+	      }
 	  }
-  }
+ }
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
