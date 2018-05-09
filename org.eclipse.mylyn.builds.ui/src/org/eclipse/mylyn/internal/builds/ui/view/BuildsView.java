@@ -308,7 +308,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
            }         
     } 
 
-  }
+  };
 	
 	private RefreshAutomaticallyAction refreshAutomaticallyAction;
 
