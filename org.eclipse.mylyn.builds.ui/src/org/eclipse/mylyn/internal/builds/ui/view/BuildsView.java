@@ -308,8 +308,9 @@ public class BuildsView extends ViewPart implements IShowInTarget {
   public mylog  log;
 
 	public BuildsView() {
-		BuildsUiPlugin.getDefault().initializeRefresh();
 		log = new mylog("BuildsView");
+		log.log("BuildsView.create");
+		BuildsUiPlugin.getDefault().initializeRefresh();
 		TaskListView taskListView = TaskListView.getFromActivePerspective();
 		
 		if (taskListView != null) {
