@@ -311,8 +311,10 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		BuildsUiPlugin.getDefault().initializeRefresh();
 		log = new mylog("BuildsView");
 		TaskListView taskListView = TaskListView.getFromActivePerspective();
-		/*
+		
 		if (taskListView != null) {
+			log.log("taskListView:",taskListView.ID)
+			/*
 			  taskListView.getNotifyBuilderSource().addEventListener(
       new NotifyBuilderEventListenerInterface() {
       		public void handleEvent(NotifyBuilderEvent de) {
@@ -334,8 +336,8 @@ public class BuildsView extends ViewPart implements IShowInTarget {
       			   
       		   }
       	  }
-      	);
-		}*/
+      	);*/
+		}
 	}
 
 	private void contributeToActionBars() {
