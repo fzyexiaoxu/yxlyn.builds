@@ -335,7 +335,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		if (taskListView != null) {
 			log.log("taskListView:"+taskListView.ID);
 			
-			taskListView.getNotifyBuilderSource().addEventListener( notifyBuilderListener );
+			//taskListView.getNotifyBuilderSource().addEventListener( notifyBuilderListener );
 	  }
   }
 	private void contributeToActionBars() {
