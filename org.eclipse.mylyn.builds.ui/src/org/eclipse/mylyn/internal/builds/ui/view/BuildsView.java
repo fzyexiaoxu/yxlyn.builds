@@ -309,6 +309,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 
 	public BuildsView() {
 		BuildsUiPlugin.getDefault().initializeRefresh();
+		/*
 		log = new mylog("BuildsView");
 		TaskListView taskListView = TaskListView.getFromActivePerspective();
 		if (taskListView != null) {
@@ -317,7 +318,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
       		public void handleEvent(NotifyBuilderEvent de) {
       			   String compontent = de.getCompontent();
       			   log.log(compontent);
-               /*
+               
       			   for (TreeItem parentItem : getViewer().getTree().getItems()) {
       			   	for (TreeItem item : parentItem.getItems()) {
       			   		if (item.getData() instanceof IBuildPlan) {
@@ -330,12 +331,11 @@ public class BuildsView extends ViewPart implements IShowInTarget {
       			   		}
       			   	}
                
-      			   }
-      			   */
+      			   
       		   }
       	  }
       	);
-		}
+		}*/
 	}
 
 	private void contributeToActionBars() {
