@@ -290,7 +290,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	private final NotifyBuilderEventListenerInterface builderReceiverEventListener = new NotifyBuilderEventListenerInterface() {
 		public void handleEvent(NotifyBuilderEvent de) {
 			String compontent = de.getCompontent();
-
+      /*
 			for (TreeItem parentItem : getViewer().getTree().getItems()) {
 				for (TreeItem item : parentItem.getItems()) {
 					if (item.getData() instanceof IBuildPlan) {
@@ -304,6 +304,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 				}
 
 			}
+			*/
 		}
 
 	};
