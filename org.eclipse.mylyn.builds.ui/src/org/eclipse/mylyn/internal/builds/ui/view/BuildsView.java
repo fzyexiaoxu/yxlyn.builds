@@ -106,7 +106,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.IWorkbenchSiteProgressService;
 
 import org.eclipse.ui.IViewPart;
-import org.eclipse.mylyn.internal.event;
+import org.eclipse.mylyn.internal.event.*;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
