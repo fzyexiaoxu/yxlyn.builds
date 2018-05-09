@@ -71,8 +71,7 @@ import org.eclipse.mylyn.internal.builds.ui.actions.ShowTestResultsAction;
 import org.eclipse.mylyn.internal.builds.ui.commands.OpenHandler;
 import org.eclipse.mylyn.internal.builds.ui.notifications.BuildsServiceMessageControl;
 import org.eclipse.mylyn.internal.builds.ui.view.BuildContentProvider.Presentation;
-import org.eclipse.mylyn.internal.event.NotifyBuilderEvent;
-import org.eclipse.mylyn.internal.event.NotifyBuilderEventListenerInterface;
+
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
@@ -108,6 +107,8 @@ import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.IWorkbenchSiteProgressService;
+
+import org.eclipse.mylyn.internal.event.*;
 
 /**
  * @author Steffen Pingel
