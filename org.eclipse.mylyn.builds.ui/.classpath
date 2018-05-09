@@ -9,5 +9,6 @@
 			<accessrule kind="accessible" pattern="org/eclipse/mylyn/versions/**"/>
 		</accessrules>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Program Files/eclipse/plugins/org.eclipse.mylyn.tasks.ui_3.24.0.v20180227-0955.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
