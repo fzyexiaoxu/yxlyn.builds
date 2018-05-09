@@ -317,7 +317,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 			log.log("taskListView:"+taskListView.ID);
 			
 			taskListView.getNotifyBuilderSource().addEventListener( new NotifyBuilderEventListenerInterface() {
-			    @Overridenew 
+			    @Override
       		public void handleEvent(NotifyBuilderEvent de) {
       			   /*String compontent = de.getCompontent();
       			   log.log(compontent);
