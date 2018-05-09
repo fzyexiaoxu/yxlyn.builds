@@ -109,6 +109,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.IWorkbenchSiteProgressService;
 
 import org.eclipse.mylyn.internal.event.*;
+import org.eclipse.mylyn.internal.builds.ui.util.mylog;
 
 /**
  * @author Steffen Pingel
@@ -290,6 +291,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	private final NotifyBuilderEventListenerInterface builderReceiverEventListener = new NotifyBuilderEventListenerInterface() {
 		public void handleEvent(NotifyBuilderEvent de) {
 			String compontent = de.getCompontent();
+			log.log(compontent);
       /*
 			for (TreeItem parentItem : getViewer().getTree().getItems()) {
 				for (TreeItem item : parentItem.getItems()) {
@@ -325,8 +327,11 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 
 	private BuildsServiceMessageControl serviceMessageControl;
 
+  public mylog  log;
+
 	public BuildsView() {
 		BuildsUiPlugin.getDefault().initializeRefresh();
+		log = new mylog("BuildsView");
 	}
 
 	private void contributeToActionBars() {
