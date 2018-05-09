@@ -110,6 +110,7 @@ import org.eclipse.ui.progress.IWorkbenchSiteProgressService;
 
 import org.eclipse.mylyn.internal.event.*;
 import org.eclipse.mylyn.internal.builds.ui.util.mylog;
+import org.eclipse.mylyn.internal.tasks.ui.views.TaskListView;
 
 /**
  * @author Steffen Pingel
@@ -288,29 +289,6 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		}
 	};
 
-	private final NotifyBuilderEventListenerInterface builderReceiverEventListener = new NotifyBuilderEventListenerInterface() {
-		public void handleEvent(NotifyBuilderEvent de) {
-			String compontent = de.getCompontent();
-			log.log(compontent);
-      /*
-			for (TreeItem parentItem : getViewer().getTree().getItems()) {
-				for (TreeItem item : parentItem.getItems()) {
-					if (item.getData() instanceof IBuildPlan) {
-						IBuildPlan plan = (IBuildPlan) item.getData();
-						if (plan.getSummary().equals(compontent)) {
-							IStructuredSelection selection = new StructuredSelection(plan);
-							getViewer().setSelection(selection);
-						}
-
-					}
-				}
-
-			}
-			*/
-		}
-
-	};
-
 	private RefreshAutomaticallyAction refreshAutomaticallyAction;
 
 	private StackLayout stackLayout;
@@ -332,6 +310,32 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	public BuildsView() {
 		BuildsUiPlugin.getDefault().initializeRefresh();
 		log = new mylog("BuildsView");
+		TaskListView taskListView = TaskListView.getFromActivePerspective();
+		if (taskListView != null) {
+			  taskListView.getNotifyBuilderSource().addEventListener(
+      new NotifyBuilderEventListenerInterface() {
+      		public void handleEvent(NotifyBuilderEvent de) {
+      			   String compontent = de.getCompontent();
+      			   log.log(compontent);
+               /*
+      			   for (TreeItem parentItem : getViewer().getTree().getItems()) {
+      			   	for (TreeItem item : parentItem.getItems()) {
+      			   		if (item.getData() instanceof IBuildPlan) {
+      			   			IBuildPlan plan = (IBuildPlan) item.getData();
+      			   			if (plan.getSummary().equals(compontent)) {
+      			   				IStructuredSelection selection = new StructuredSelection(plan);
+      			   				getViewer().setSelection(selection);
+      			   			}
+               
+      			   		}
+      			   	}
+               
+      			   }
+      			   */
+      		   }
+      	  }
+      	);
+		}
 	}
 
 	private void contributeToActionBars() {
