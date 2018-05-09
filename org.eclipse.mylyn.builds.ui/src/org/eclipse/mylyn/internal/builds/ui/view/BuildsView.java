@@ -316,8 +316,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		if (taskListView != null) {
 			log.log("taskListView:"+taskListView.ID);
 			
-			taskListView.getNotifyBuilderSource().addEventListener(
-      new NotifyBuilderEventListenerInterface() {
+			taskListView.getNotifyBuilderSource().addEventListener( new NotifyBuilderEventListenerInterface() {
       		public void handleEvent(NotifyBuilderEvent de) {
       			   String compontent = de.getCompontent();
       			   log.log(compontent);
@@ -333,11 +332,10 @@ public class BuildsView extends ViewPart implements IShowInTarget {
       			   		   }
       			   	 }                  			   
       		   }*/
-      	  }
-      	);
-		 }
-	 }
- }
+      	   }
+      	) }
+	  }
+  }
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
