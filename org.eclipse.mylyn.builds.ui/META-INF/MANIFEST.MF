@@ -54,3 +54,5 @@ Export-Package: org.eclipse.mylyn.builds.ui;x-internal:=true,
  org.eclipse.mylyn.internal.builds.ui.notifications;x-internal:=true,
  org.eclipse.mylyn.internal.builds.ui.util;x-internal:=true,
  org.eclipse.mylyn.internal.builds.ui.view;x-internal:=false
+Bundle-ClassPath: org.eclipse.mylyn.help.ui-3.24.0-SNAPSHOT.jar,
+ .
