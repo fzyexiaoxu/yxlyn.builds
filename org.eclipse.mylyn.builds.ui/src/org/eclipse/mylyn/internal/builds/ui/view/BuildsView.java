@@ -104,7 +104,12 @@ import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.progress.IWorkbenchSiteProgressService;
+
 import org.eclipse.ui.IViewPart;
+import org.eclipse.mylyn.internal.event;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 
 /**
  * @author Steffen Pingel
@@ -283,6 +288,28 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		}
 	};
 
+  private final NotifyBuilderEventListenerInterface builderReceiverEventListener = new NotifyBuilderEventListenerInterface() {
+  	    public void handleEvent(NotifyBuilderEvent de) { 
+           String compontent = de.getCompontent();
+           
+           for (TreeItem parentItem : getViewer().getTree().getItems() )
+           {
+           	    for ( TreeItem item:parentItem.getITems() ) {
+           	    	   if (item.getData() instanceof IBuildPlan) {
+           	    	   	   IBuildPlan plan = (IBuildPlan)item.getData();
+           	    	   	   if (plan.getSummary().equals(compontent) ) {
+           	    	   	   	  IStructuredSelection selection = new IStructuredSelection(plan);
+           	    	   	   	  getViewer().setSelection(selection); 
+           	    	   	   }
+           	    	   	
+           	    	   }
+           	    }
+           
+           }         
+    } 
+
+  }
+	
 	private RefreshAutomaticallyAction refreshAutomaticallyAction;
 
 	private StackLayout stackLayout;
@@ -302,7 +329,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	public BuildsView() {
 		BuildsUiPlugin.getDefault().initializeRefresh();
 	}
-
+    
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
