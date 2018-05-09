@@ -307,16 +307,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 
   public mylog  log;
 
-	public BuildsView() {
-		log = new mylog("BuildsView");
-		log.log("BuildsView.create");
-		BuildsUiPlugin.getDefault().initializeRefresh();
-		TaskListView taskListView = TaskListView.getFromActivePerspective();
-		
-		if (taskListView != null) {
-			log.log("taskListView:"+taskListView.ID);
-			
-			taskListView.getNotifyBuilderSource().addEventListener( new NotifyBuilderEventListenerInterface() {
+	private final NotifyBuilderEventListenerInterface notifyBuilderListener = new NotifyBuilderEventListenerInterface() {
       		public void handleEvent(NotifyBuilderEvent de) {
       			   /*String compontent = de.getCompontent();
       			   log.log(compontent);
@@ -333,7 +324,18 @@ public class BuildsView extends ViewPart implements IShowInTarget {
       			   	 }                  			   
       		   }*/
       	   }
-      	 } );
+      	 };
+
+	public BuildsView() {
+		log = new mylog("BuildsView");
+		log.log("BuildsView.create");
+		BuildsUiPlugin.getDefault().initializeRefresh();
+		TaskListView taskListView = TaskListView.getFromActivePerspective();
+		
+		if (taskListView != null) {
+			log.log("taskListView:"+taskListView.ID);
+			
+			taskListView.getNotifyBuilderSource().addEventListener( notifyBuilderListener );
 	  }
   }
 	private void contributeToActionBars() {
