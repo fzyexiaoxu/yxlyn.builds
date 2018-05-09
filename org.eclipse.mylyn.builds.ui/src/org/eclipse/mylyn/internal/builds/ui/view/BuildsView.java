@@ -313,7 +313,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		TaskListView taskListView = TaskListView.getFromActivePerspective();
 		
 		if (taskListView != null) {
-			log.log("taskListView:",taskListView.ID);
+			log.log("taskListView:"+taskListView.ID);
 			/*
 			  taskListView.getNotifyBuilderSource().addEventListener(
       new NotifyBuilderEventListenerInterface() {
