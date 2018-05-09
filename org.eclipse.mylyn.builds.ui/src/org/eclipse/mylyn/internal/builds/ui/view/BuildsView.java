@@ -110,6 +110,7 @@ import org.eclipse.mylyn.internal.event.*;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.widgets.TreeItem;
 
 /**
  * @author Steffen Pingel
