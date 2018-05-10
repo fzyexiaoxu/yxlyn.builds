@@ -341,8 +341,8 @@ public class BuildsView extends ViewPart implements IShowInTarget {
         		     }
         	     }
         	   }  
-	  		  );*/
-	      }
+	  		  );
+	      }*/
 	  }
  }
 	private void contributeToActionBars() {
