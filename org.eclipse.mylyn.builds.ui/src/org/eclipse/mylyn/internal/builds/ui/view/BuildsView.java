@@ -343,6 +343,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 
 	@Override
 	public void createPartControl(Composite parent) {
+	  	log.log("BuildsView.createPartControl");
 		Composite body = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout(1, false);
 		layout.marginHeight = 0;
