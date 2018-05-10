@@ -413,7 +413,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 
 	}
 
-  private void  installBuilderEventListener{
+  private void  installBuilderEventListener() {
 	  	TaskListView taskListView = TaskListView.getFromActivePerspective();
 	  	if (taskListView != null) {
 	  		log.log("found taskListView:"+taskListView.ID);
