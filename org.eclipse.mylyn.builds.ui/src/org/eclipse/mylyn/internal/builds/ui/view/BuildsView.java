@@ -273,6 +273,8 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	private AdapterImpl modelListener;
 
 	private BuildElementPropertiesAction propertiesAction;
+	
+	private NotifyBuilderEventSource notifyEventSource;
 
 	private final IPropertyChangeListener propertyChangeListener = new IPropertyChangeListener() {
 		public void propertyChange(PropertyChangeEvent event) {
@@ -308,7 +310,6 @@ public class BuildsView extends ViewPart implements IShowInTarget {
   public mylog  log;
 
 	public BuildsView() {
-	   NotifyBuilderEventSource notifyEventSource = null;
 	  	log = new mylog("BuildsView");
 	  	log.log("BuildsView.create");
 	  	BuildsUiPlugin.getDefault().initializeRefresh();
