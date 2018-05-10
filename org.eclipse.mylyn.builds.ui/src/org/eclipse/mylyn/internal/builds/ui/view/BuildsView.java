@@ -275,7 +275,8 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	private BuildElementPropertiesAction propertiesAction;
 	
 	private NotifyBuilderEventSource notifyEventSource;
-
+  private NotifyBuilderEventListener  notifyBuilderEventListener;
+  
 	private final IPropertyChangeListener propertyChangeListener = new IPropertyChangeListener() {
 		public void propertyChange(PropertyChangeEvent event) {
 			if (org.eclipse.mylyn.internal.builds.ui.BuildsUiInternal.PREF_AUTO_REFRESH_ENABLED
@@ -423,8 +424,10 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	  		notifyEventSource = taskListView.getNotifyBuilderSource();
 	  		log.log("get notifyEventSource!");
 	  		if (notifyEventSource!=null) {
-	  		      log.log("notifyEventSource is not null:");
-	  		      //notifyEventSource.addEventListener( new NotifyBuilderEventListener() );	  		      
+	  		      log.log("notifyEventSource is not null");
+	  		      notifyBuilderEventListener = new NotifyBuilderEventListener();
+	  		      log.log("new NotifyBuilderEventListener");
+	  		      notifyEventSource.addEventListener( notifyBuilderEventListener );	  		      
 	      }
 	  }
   	
