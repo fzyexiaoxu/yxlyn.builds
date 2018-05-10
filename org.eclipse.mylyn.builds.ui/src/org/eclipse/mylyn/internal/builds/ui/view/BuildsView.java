@@ -312,19 +312,6 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	  	log = new mylog("BuildsView");
 	  	log.log("BuildsView.create");
 	  	BuildsUiPlugin.getDefault().initializeRefresh();
-	  	TaskListView taskListView = TaskListView.getFromActivePerspective();
-	  	
-	  	if (taskListView != null) {
-	  		log.log("found taskListView:"+taskListView.ID);
-	  		
-	  		notifyEventSource = taskListView.getNotifyBuilderSource();
-	  		log.log("get notifyEventSource!");
-	  		if (notifyEventSource!=null) {
-	  		      log.log("notifyEventSource is not null:");
-	  		      notifyEventSource.addEventListener( new NotifyBuilderEventListener()  
-	  		  );	  		      
-	      }
-	  }
  }
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
@@ -421,8 +408,26 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 		new TreeViewerSupport(viewer, getStateFile());
 		// Make sure we get notifications
 		NotificationSinkProxy.setControl(serviceMessageControl);
+		
+		installBuilderEventListener();
+
 	}
 
+  private void  installBuilderEventListener{
+	  	TaskListView taskListView = TaskListView.getFromActivePerspective();
+	  	if (taskListView != null) {
+	  		log.log("found taskListView:"+taskListView.ID);
+	  		
+	  		notifyEventSource = taskListView.getNotifyBuilderSource();
+	  		log.log("get notifyEventSource!");
+	  		if (notifyEventSource!=null) {
+	  		      log.log("notifyEventSource is not null:");
+	  		      notifyEventSource.addEventListener( new NotifyBuilderEventListener()  
+	  		  );	  		      
+	      }
+	  }
+  	
+  }
 	/**
 	 * Initializes automatic resize of the tree control columns. The size of these will be adjusted when a node is
 	 * expanded or collapsed and when the tree changes size.
