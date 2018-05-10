@@ -308,6 +308,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
   public mylog  log;
 
 	public BuildsView() {
+	   NotifyBuilderEventSource notifyEventSource = null;
 	  	log = new mylog("BuildsView");
 	  	log.log("BuildsView.create");
 	  	BuildsUiPlugin.getDefault().initializeRefresh();
@@ -316,8 +317,9 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	  	if (taskListView != null) {
 	  		log.log("found taskListView:"+taskListView.ID);
 	  		
-	  		NotifyBuilderEventSource notifyEventSource = taskListView.getNotifyBuilderSource();
+	  		notifyEventSource = taskListView.getNotifyBuilderSource();
 	  		log.log("get notifyEventSource!");
+	  		/*
 	  		if (notifyEventSource!=null) {
 	  		      log.log("notifyEventSource is not null:");
 	  		      notifyEventSource.addEventListener( new NotifyBuilderEventListenerInterface() {
@@ -336,10 +338,10 @@ public class BuildsView extends ViewPart implements IShowInTarget {
         		  	   			   }               
         		  	   		   }
         		  	   	 }                  			   
-        		     }*/
+        		     }
         	     }
         	   }  
-	  		  );
+	  		  );*/
 	      }
 	  }
  }
