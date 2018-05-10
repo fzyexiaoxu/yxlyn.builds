@@ -427,7 +427,7 @@ public class BuildsView extends ViewPart implements IShowInTarget {
 	  		      log.log("notifyEventSource is not null");
 	  		      notifyBuilderEventListener = new NotifyBuilderEventListener();
 	  		      log.log("new NotifyBuilderEventListener");
-	  		      //notifyEventSource.addEventListener( notifyBuilderEventListener );	  		      
+	  		      notifyEventSource.addEventListener( notifyBuilderEventListener );	  		      
 	      }
 	  }
   	
